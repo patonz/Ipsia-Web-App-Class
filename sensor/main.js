@@ -58,15 +58,11 @@ board.on('ready', function () {
 
 });
 
-
-
-
-
-
+/** server request */
 function sendTemperatureToServer(celsius, fahrenheit, kelvin) {
 
     var privateKeySparkFunField = "private_key=8bWeM24mmBFElpvylEx9"
-    var requestUrlString = 'http://data.sparkfun.com/input/OGjz5w1KKRhlmDRAmlXd?'+ privateKeySparkFunField + '&celsius=' + celsius + '&fahrenheit=' + fahrenheit + '&kelvin=' + kelvin + '&timestamp=' + new Date();
+    var requestUrlString = 'http://data.sparkfun.com/input/OGjz5w1KKRhlmDRAmlXd?' + privateKeySparkFunField + '&celsius=' + celsius + '&fahrenheit=' + fahrenheit + '&kelvin=' + kelvin + '&timestamp=' + new Date();
     console.log(requestUrlString);
     request(requestUrlString, function (error, response, body) {
         if (!error && response.statusCode == 200) {
@@ -75,4 +71,9 @@ function sendTemperatureToServer(celsius, fahrenheit, kelvin) {
             console.log(error);
         }
     })
+}
+
+
+function getDataFromServer(){
+    // TODO
 }
